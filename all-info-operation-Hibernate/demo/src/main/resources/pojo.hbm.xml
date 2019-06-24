@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+   <!-- school表  -->
+  <class name="cn.school.pojo.School" table="school">
+    <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="name" column="name"></property>
+    <property name="jbw" column="jbw"></property>
+    <property name="eyy" column="eyy"></property>
+  </class>
+  
+  <!-- grade表  -->
+  <class name="cn.grade.pojo.Grade" table="grade">
+     <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="name" column="name"></property>
+  </class>
+  
+  <!-- class表  -->
+  <class name="cn.classMaker.pojo.ClassInfo" table="class">
+     <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="name" column="name"></property>
+    <property name="schoolId" column="sch_id"></property>
+    <property name="gradeId" column="gra_id"></property>
+  </class>
+  
+  <!-- teacher表  -->
+ <class name="cn.teacher.pojo.Teacher" table="teacher">
+     <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="name" column="name"></property>
+    <property name="courseId" column="cid"></property>
+  </class>
+  
+  <!-- course表  -->
+  <class name="cn.course.pojo.Course" table="course">
+     <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="name" column="name"></property>
+  </class>
+  
+  <!-- student表  -->
+  <class name="cn.student.pojo.Student" table="student">
+     <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="name" column="name"></property>
+    <property name="birthday" column="birthday"></property>
+    <property name="sex" column="sex"></property>
+    <property name="schoolId" column="sch_id"></property>
+    <property name="gradeId" column="gra_id"></property>
+    <property name="classId" column="cla_id"></property>
+  </class>
+  
+  <!-- elective表  -->
+  <class name="cn.elective.pojo.Elective" table="elective">
+     <id name="id" column="id">
+     <generator class="native"></generator>
+    </id>
+    <property name="studentId" column="sid"></property>
+    <property name="courseId" column="cid"></property>
+    <property name="teacherId" column="tid"></property>
+    <property name="score" column="score"></property>
+  </class>
+  
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.fuquanzhen.info.operation</groupId>
+	<artifactId>all-info-operation-Hibernate</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>demo</module>
+		<module>school-operation</module>
+		<module>grade-operation</module>
+		<module>class-operation</module>
+		<module>teacher-operation</module>
+		<module>course-operation</module>
+		<module>student-operation</module>
+		<module>elective-operation</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.fuquanzhen.info</groupId>
+			<artifactId>all-maker-info-Hibernate</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
+		</dependency>
+
+	</dependencies>
+</project>
