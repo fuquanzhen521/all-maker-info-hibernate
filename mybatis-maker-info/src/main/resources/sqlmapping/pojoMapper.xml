@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.table.dao.*">
+
+	<!-- 学校表插入 -->
+	<insert id="insertSchool" parameterType="com.table.pojo.School">
+		insert into
+		school(name,jbw,eyy)values(#{name},#{jbw},#{eyy})
+	</insert>
+
+	<!-- 学校表查询 -->
+	<select id="selectSchool" resultType="long">
+		select id from school
+	</select>
+
+	<!-- 年级表插入 -->
+	<insert id="insertGrade" parameterType="com.table.pojo.Grade">
+		insert into
+		grade(name)values(#{name})
+	</insert>
+
+	<!-- 年级表查询 -->
+	<select id="selectGrade" resultType="long">
+		select id from grade
+	</select>
+
+	<!-- 班级插入 -->
+	<insert id="insertClass" parameterType="com.table.pojo.ClassInfo">
+		insert into
+		class(name,sch_id,gra_id)values(#{name},#{sch_id},#{gra_id})
+	</insert>
+
+	<!-- 班级查询 -->
+	<select id="selectClass" parameterType="map" resultType="long">
+		select
+		id from class where
+		sch_id=#{sch_id} and gra_id=#{gra_id}
+	</select>
+
+	<!-- 学生表插入 -->
+	<insert id="insertStudent" parameterType="com.table.pojo.Student">
+		insert into
+		student(name,birthday,sex,sch_id,gra_id,cla_id)values(#{name},#{birthday},#{sex},#{sch_id},#{gra_id},#{cla_id})
+	</insert>
+
+	<!-- 学生表查询 -->
+	<select id="selectStudent" parameterType="map" resultType="long">
+		select id from student where cla_id=#{cla_id}
+	</select>
+
+	<!-- 教师表插入 -->
+	<insert id="insertTeacher" parameterType="com.table.pojo.Teacher">
+		insert into
+		teacher(name,cid)values(#{name},#{cid})
+	</insert>
+
+	<!-- 教师表查询 -->
+	<select id="selectTeacher" resultType="com.table.pojo.Teacher">
+		select * from teacher
+	</select>
+
+	<!-- 课程表插入 -->
+	<insert id="insertCourse" parameterType="com.table.pojo.Course">
+		insert into
+		course(name)values(#{name})
+	</insert>
+
+	<!-- 课程表查询 -->
+	<select id="selectCourse" resultType="long">
+		select id from course
+	</select>
+
+	<!-- 选修课插入 -->
+	<insert id="insertElective" parameterType="com.table.pojo.Elective">
+		insert into
+		elective(sid,cid,tid,score)values(#{sid},#{cid},#{tid},#{score})
+	</insert>
+
+
+</mapper>
