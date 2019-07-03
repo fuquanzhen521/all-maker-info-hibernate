@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 开启注解扫描器 -->
+	<context:component-scan base-package="com.table"></context:component-scan>
 
 	<!-- SchoolDaoImpl -->
-	<bean id="schoolDaoImpl" class="com.table.daoimpl.SchoolDaoImpl"></bean>
+	<!-- <bean id="schoolDaoImpl" class="com.table.daoimpl.SchoolDaoImpl"></bean> -->
 
 	<!-- GradeDaoImpl -->
-	<bean id="gradeDaoImpl" class="com.table.daoimpl.GradeDaoImpl"></bean>
+	<!-- <bean id="gradeDaoImpl" class="com.table.daoimpl.GradeDaoImpl"></bean> -->
 
 	<!-- SchoolServiceImpl -->
-	<bean id="schoolServiceImpl" class="com.table.serviceimpl.SchoolServiceImpl"></bean>
+	<!-- <bean id="schoolServiceImpl" class="com.table.serviceimpl.SchoolServiceImpl"></bean> -->
 
 	<!-- GradeServiceImpl -->
-	<bean id="gradeServiceImpl" class="com.table.serviceimpl.GradeServiceImpl"></bean>
+	<!-- <bean id="gradeServiceImpl" class="com.table.serviceimpl.GradeServiceImpl"></bean> -->
 
 	<!-- ClassInfoDaoImpl -->
-	<bean id="classInfoDaoImpl" class="com.table.daoimpl.ClassInfoDaoImpl"></bean>
+	<!-- <bean id="classInfoDaoImpl" class="com.table.daoimpl.ClassInfoDaoImpl"></bean> -->
 
 	<!-- ClassInfoServiceImpl -->
-	<bean id="classInfoServiceImpl" class="com.table.serviceimpl.ClassInfoServiceImpl"></bean>
+	<!-- <bean id="classInfoServiceImpl" class="com.table.serviceimpl.ClassInfoServiceImpl"></bean> -->
 
 	<!-- StudentDaoImpl -->
-	<bean id="studentDaoImpl" class="com.table.daoimpl.StudentDaoImpl"></bean>
+	<!-- <bean id="studentDaoImpl" class="com.table.daoimpl.StudentDaoImpl"></bean> -->
 
 	<!-- StudentServiceImpl -->
-	<bean id="studentServiceImpl" class="com.table.serviceimpl.StudentServiceImpl"></bean>
+	<!-- <bean id="studentServiceImpl" class="com.table.serviceimpl.StudentServiceImpl"></bean> -->
 
 	<!-- CourseDaoImpl -->
-	<bean id="courseDaoImpl" class="com.table.daoimpl.CourseDaoImpl"></bean>
+	<!-- <bean id="courseDaoImpl" class="com.table.daoimpl.CourseDaoImpl"></bean> -->
 
 	<!-- CourseServiceImpl -->
-	<bean id="courseServiceImpl" class="com.table.serviceimpl.CourseServiceImpl"></bean>
+	<!-- <bean id="courseServiceImpl" class="com.table.serviceimpl.CourseServiceImpl"></bean> -->
 
 	<!-- TeacherDaoImpl -->
-	<bean id="teacherDaoImpl" class="com.table.daoimpl.TeacherDaoImpl"></bean>
+	<!-- <bean id="teacherDaoImpl" class="com.table.daoimpl.TeacherDaoImpl"></bean> -->
 
 	<!-- TeacherServiceImpl -->
-	<bean id="teacherServiceImpl" class="com.table.serviceimpl.TeacherServiceImpl"></bean>
+	<!-- <bean id="teacherServiceImpl" class="com.table.serviceimpl.TeacherServiceImpl"></bean> -->
 
 	<!-- ElectiveDaoImpol -->
-	<bean id="electiveDaoImpl" class="com.table.daoimpl.ElectiveDaoImpl"></bean>
+	<!-- <bean id="electiveDaoImpl" class="com.table.daoimpl.ElectiveDaoImpl"></bean> -->
 
 	<!-- ElectiveServiceImpl -->
-	<bean id="electiveServiceImpl" class="com.table.serviceimpl.ElectiveServiceImpl"></bean>
+	<!-- <bean id="electiveServiceImpl" class="com.table.serviceimpl.ElectiveServiceImpl"></bean> -->
 
 </beans>

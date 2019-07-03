@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.table.dao.TeacherDao;
 import com.table.pojo.Teacher;
@@ -17,7 +18,15 @@ import com.table.service.TeacherService;
  * 作用:teacher表的增删查改的具体实现
  * 日期:2019/6/28
  */
+
+@Service
 public class TeacherServiceImpl implements TeacherService {
+
+	@Autowired
+	private TeacherDao teacherDao;
+
+	@Autowired
+	private CourseService courseService;
 
 	// 无参构造器
 	public TeacherServiceImpl() {
@@ -27,12 +36,6 @@ public class TeacherServiceImpl implements TeacherService {
 	public void insertTeacher() throws IOException {
 		// 创建Teacher对象
 		Teacher teacher = new Teacher();
-		// 加载spring配置文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化TeacherDao对象
-		TeacherDao teacherDao = (TeacherDao) context.getBean("teacherDaoImpl");
-		// 实例化CourseService对象
-		CourseService courseService = (CourseService) context.getBean("courseServiceImpl");
 		// 查询出course表的id
 		List<Long> courseIdList = courseService.selectCourse();
 		// 打乱course表的id集合
@@ -59,10 +62,6 @@ public class TeacherServiceImpl implements TeacherService {
 
 	// 查询
 	public List<Teacher> selectTeacher() throws IOException {
-		// 加载spring配置文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化TeacherDao对象
-		TeacherDao teacherDao = (TeacherDao) context.getBean("teacherDaoImpl");
 		// 查询
 		List<Teacher> teacherList = teacherDao.selectTeacher();
 		// 返回集合

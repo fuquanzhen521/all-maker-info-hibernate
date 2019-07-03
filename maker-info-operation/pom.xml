@@ -40,79 +40,69 @@
 			<version>4.2.4.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
 
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.table.demo.Demo</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>mybatis-maker-info</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.table.demo.Demo</mainClass>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring-beans</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring-context</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring-core</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring-expression</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring-aop</resource>
+								</transformer>
+								<!-- 这句话作用是把spring-*.jar所有包里的spring.schemas合并，避免像之前每打包一个spring-*.jar到 可执行jar中，之后的spring.schema就s把之前的覆盖了。-->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
 
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.table.demo.Demo</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>spring-beans</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.table.demo.Demo</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>spring-context</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.table.demo.Demo</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>spring-core</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.table.demo.Demo</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>spring-expression</descriptorRef>
-					</descriptorRefs>
-				</configuration>
+								<!-- 
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                	<resource>META-INF/spring.schemas</resource>
+                            	</transformer>
+								 -->
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>

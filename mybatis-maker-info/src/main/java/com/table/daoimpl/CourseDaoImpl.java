@@ -4,11 +4,20 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.table.dao.CourseDao;
 import com.table.pojo.Course;
 import com.table.utils.TableUtils;
 
+/*
+ * 作者:付全镇
+ * 类名:CourseDaoImpl
+ * 作用:course表的增删查改
+ * 日期:2019/7/1
+ */
+
+@Repository
 public class CourseDaoImpl implements CourseDao {
 
 	public CourseDaoImpl() {

@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.table.dao.SchoolDao;
 import com.table.pojo.School;
@@ -16,7 +17,12 @@ import com.table.service.SchoolService;
  * 作用:school表的增删查改的具体实现
  * 日期:2019/6/28
  */
+
+@Service
 public class SchoolServiceImpl implements SchoolService {
+
+	@Autowired
+	private SchoolDao schoolDao;
 
 	// 无参构造器
 	public SchoolServiceImpl() {
@@ -26,10 +32,6 @@ public class SchoolServiceImpl implements SchoolService {
 	public void insertSchool(String schoolName, Integer size) throws IOException {
 		// 创建School对象
 		School school = new School();
-		// 加载spring的xml文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化SchoolDaoImpl对象
-		SchoolDao schoolDao = (SchoolDao) context.getBean("schoolDaoImpl");
 		// 随机函数
 		Random random = new Random();
 		// 遍历传入的学校数
@@ -60,10 +62,6 @@ public class SchoolServiceImpl implements SchoolService {
 
 	// 查询
 	public List<Long> selectSchool() throws IOException {
-		// 加载spring的xml文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化SchoolDaoImpl对象
-		SchoolDao schoolDao = (SchoolDao) context.getBean("schoolDaoImpl");
 		// 查询
 		List<Long> schoolIdList = schoolDao.selectSchool();
 		// 返回集合

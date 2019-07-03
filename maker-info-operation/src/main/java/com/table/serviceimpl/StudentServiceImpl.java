@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.table.dao.StudentDao;
 import com.table.pojo.Student;
@@ -19,7 +20,12 @@ import com.table.service.StudentService;
  * 作用:student表的增删查改具体实现
  * 日期：2019/6/28
  */
+
+@Service
 public class StudentServiceImpl implements StudentService {
+
+	@Autowired
+	private StudentDao studentDao;
 
 	// 无参构造器
 	public StudentServiceImpl() {
@@ -29,10 +35,6 @@ public class StudentServiceImpl implements StudentService {
 	public void insertStudent(long schoolId, long gradeId, long classId) throws IOException {
 		// 创建Student对象
 		Student student = new Student();
-		// 加载spring配置文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化StudentDao对象
-		StudentDao studentDao = (StudentDao) context.getBean("studentDaoImpl");
 		// 随机函数
 		Random random = new Random();
 		// 随机取90到100个学生数
@@ -76,10 +78,6 @@ public class StudentServiceImpl implements StudentService {
 
 	// 查询
 	public List<Long> selectStudent(Map<String, Object> map) throws IOException {
-		// 加载spring配置文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化StudentDao对象
-		StudentDao studentDao = (StudentDao) context.getBean("studentDaoImpl");
 		// 查询
 		List<Long> stuentIdList = studentDao.selectStudent(map);
 		return stuentIdList;

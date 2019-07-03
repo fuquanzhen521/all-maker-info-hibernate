@@ -5,11 +5,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.table.dao.ClassInfoDao;
 import com.table.pojo.ClassInfo;
 import com.table.utils.TableUtils;
 
+/*
+ * 作者:付全镇
+ * 类名:ClassInfoDaoImpl
+ * 作用:class表的增删查改的具体实现
+ * 日期:2019/7/1
+ */
+
+@Repository
 public class ClassInfoDaoImpl implements ClassInfoDao {
 
 	// 无参构造器
@@ -40,7 +49,6 @@ public class ClassInfoDaoImpl implements ClassInfoDao {
 
 	// 修改
 	public void updateClass() {
-		// TODO Auto-generated method stub
 
 	}
 

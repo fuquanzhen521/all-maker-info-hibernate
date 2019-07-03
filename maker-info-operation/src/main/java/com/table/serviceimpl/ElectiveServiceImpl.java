@@ -3,20 +3,28 @@ package com.table.serviceimpl;
 import java.io.IOException;
 import java.util.Random;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.table.dao.ElectiveDao;
 import com.table.pojo.Elective;
 import com.table.service.ElectiveService;
 
+/*
+ * 作者:付全镇
+ * 类名:ElectiveServiceImpl
+ * 作用:选课表的增删查改的具体实现
+ * 日期:2019/7/1
+ */
+
+@Service
 public class ElectiveServiceImpl implements ElectiveService {
+
+	@Autowired
+	private ElectiveDao electiveDao;
 
 	// 插入
 	public void insertElective(long studentId, long teacherId, long courseId) throws IOException {
-		// 加载spring配置文件
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 实例化ElectiveDao对象
-		ElectiveDao electiveDao = (ElectiveDao) context.getBean("electiveDaoImpl");
 		// 创建Elective对象
 		Elective elective = new Elective();
 		elective.setSid(studentId);
